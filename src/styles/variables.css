@@ -1,0 +1,13 @@
+:root {
+    --bg-dark: #0e0e0e;
+    --bg-card: #1a1a1a;
+
+    --text-primary: #ededed;
+    --text-secondary: #b5b5b5;
+
+    --accent: #e67e5f;
+    /* coral */
+    --accent-dark: #cf6b4f;
+
+    --radius: 16px;
+}

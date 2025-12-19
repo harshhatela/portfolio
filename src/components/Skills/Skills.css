@@ -1,0 +1,51 @@
+.skills {
+    width: 100%;
+    padding: 140px 80px;
+    text-align: center;
+}
+
+.skills h2 {
+    font-size: 44px;
+    color: white;
+    margin-bottom: 60px;
+}
+
+/* SKILLS GRID */
+.skills-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+/* SKILL PILL */
+.skill-pill {
+    padding: 14px 26px;
+    border-radius: 999px;
+    background: #141414;
+    color: #e0e0e0;
+    font-size: 14px;
+    border: 1px solid #2a2a2a;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.skill-pill:hover {
+    background: #ff8a65;
+    color: #000;
+    border-color: #ff8a65;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .skills {
+        padding: 120px 24px;
+    }
+
+    .skills h2 {
+        font-size: 36px;
+    }
+}
