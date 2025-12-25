@@ -1,77 +1,60 @@
-import "./Navbar.css";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+import './Navbar.css';
 
-const sections = ["hero", "about", "skills", "projects", "contact"];
-
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("hero");
+const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      sections.forEach((id) => {
-        const el = document.getElementById(id);
-        if (!el) return;
-
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 150 && rect.bottom >= 150) {
-          setActive(id);
-        }
-      });
+      setScrolled(window.scrollY > 50);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollTo = (id) => {
-    setOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Services', href: '#services' },
+    { name: 'Contact', href: '#contact' }
+  ];
 
   return (
-    <>
-      <motion.nav
-        className="navbar"
-        initial={{ y: -30, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <div className="logo">
-          <span className="dot" /> Harsh
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+      <div className="navbar-container">
+        <div className="navbar-logo">
+          <h2>Harsh<span>.</span></h2>
         </div>
 
-        <button className="menu-btn" onClick={() => setOpen(true)}>
-          MENU
-        </button>
-      </motion.nav>
+        <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+          {navLinks.map((link, index) => (
+            <a 
+              key={index} 
+              href={link.href} 
+              className="navbar-link"
+              onClick={() => setMenuOpen(false)}
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
 
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            className="menu-overlay"
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ duration: 0.6 }}
-          >
-            <button className="close-btn" onClick={() => setOpen(false)}>✕</button>
+        <button className="navbar-cta">Let's Talk</button>
 
-            <ul>
-              {sections.map((id) => (
-                <li
-                  key={id}
-                  className={active === id ? "active" : ""}
-                  onClick={() => scrollTo(id)}
-                >
-                  {id.charAt(0).toUpperCase() + id.slice(1)}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+        <div 
+          className={`hamburger ${menuOpen ? 'active' : ''}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
   );
-}
+};
+
+export default Navbar;

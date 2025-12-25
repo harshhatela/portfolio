@@ -5,34 +5,35 @@ import profile from "../../assets/profile.jpg";
 export default function Hero() {
   return (
     <section className="hero" id="hero">
-      <motion.div
-        className="hero-content"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h1>Hey! I’m Harsh</h1>
-        <h2>A UI/UX Designer</h2>
+      <div className="hero-frame">
+        <motion.div
+          className="hero-text"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1>Harsh Hatela</h1>
+          <h2>UI/UX Designer & Frontend Developer</h2>
+          <p>
+            I design clean, aesthetic, and user-focused digital experiences and
+            build them with modern frontend technologies.
+          </p>
 
-        <p>
-          I design thoughtful user experiences and build clean interfaces
-          with a focus on clarity, usability, and aesthetics.
-        </p>
+          <div className="hero-actions">
+            <button className="btn-primary">Get in touch</button>
+            <button className="btn-secondary">View projects</button>
+          </div>
+        </motion.div>
 
-        <div className="hero-buttons">
-          <button className="primary">Contact Me</button>
-          <button className="secondary">View Projects</button>
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="hero-image"
-        initial={{ scale: 0.85, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-      >
-        <img src={profile} alt="Harsh profile" />
-      </motion.div>
+        <motion.div
+          className="hero-visual"
+          initial={{ opacity: 0, scale: 0.96 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+        >
+          <img src={profile} alt="Harsh" />
+        </motion.div>
+      </div>
     </section>
   );
 }

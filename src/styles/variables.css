@@ -1,13 +1,12 @@
 :root {
-    --bg-dark: #0e0e0e;
-    --bg-card: #1a1a1a;
-
-    --text-primary: #ededed;
-    --text-secondary: #b5b5b5;
-
-    --accent: #e67e5f;
-    /* coral */
-    --accent-dark: #cf6b4f;
-
-    --radius: 16px;
+    --bg-dark: #0f0f11;
+    --bg-card: #1a1b23;
+    --primary: #EE6C4D;
+    --text-white: #ffffff;
+    --text-gray: #a1a1a1;
+    --font-heading: 'Kanit', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --container-width: 1200px;
+    --radius-lg: 24px;
+    --radius-md: 16px;
 }
