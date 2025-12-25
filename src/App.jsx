@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import './App.css';
 import logo from './assets/logo.png'; 
 
+// redeploy test
+
 // Icons
 import { FaReact, FaHtml5, FaCss3Alt, FaJs, FaNodeJs, FaBootstrap, FaPython, FaGitAlt, FaFigma, FaFolder, FaLightbulb, FaBolt, FaClock, FaCode, FaPaintBrush, FaMobileAlt, FaPalette, FaChartLine, FaCommentDots } from "react-icons/fa";
 import { SiCplusplus, SiC, SiMysql, SiCanva } from "react-icons/si";
