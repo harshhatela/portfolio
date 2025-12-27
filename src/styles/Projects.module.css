@@ -1,0 +1,119 @@
+.projects {
+    padding: 100px 5%;
+    position: relative;
+    z-index: 2;
+}
+
+.sectionTitle {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 5px;
+    animation: fadeInUp 0.8s ease-out;
+    color: #fff;
+}
+
+.projectsGrid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.projectCard {
+    background-color: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    animation: fadeInUp 0.6s ease-out;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.projectCard:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(255, 107, 107, 0.3);
+}
+
+.projectImage {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.projectImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.projectCard:hover .projectImage img {
+    transform: scale(1.1);
+}
+
+.projectInfo {
+    padding: 25px;
+}
+
+.projectInfo h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.projectInfo p {
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.projectLink {
+    background: #FF6B6B;
+    color: #fff;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.projectLink:hover {
+    transform: rotate(45deg) scale(1.2);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .projectsGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .sectionTitle {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 568px) {
+    .sectionTitle {
+        font-size: 2rem;
+    }
+}

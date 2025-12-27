@@ -1,8 +1,0 @@
-.hero-frame {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 160px 120px;
-    display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    column-gap: 80px;
-}

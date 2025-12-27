@@ -1,0 +1,74 @@
+.about {
+    font-weight: 600;
+    padding: 100px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.aboutCard {
+    max-width: 1000px;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    color: #000;
+    padding: 80px 60px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: cardWave 5s ease-in-out infinite;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.aboutTitle {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 40px;
+    letter-spacing: 5px;
+}
+
+.aboutText {
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #000;
+    text-align: center;
+}
+
+@keyframes cardWave {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        border-radius: 20px;
+    }
+
+    50% {
+        transform: translateY(-10px);
+        border-radius: 30px 20px 30px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .aboutCard {
+        padding: 60px 40px;
+    }
+
+    .aboutTitle {
+        font-size: 3rem;
+    }
+
+    .aboutText {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 568px) {
+    .aboutCard {
+        padding: 40px 30px;
+    }
+
+    .aboutTitle {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,151 @@
+.footer {
+    padding: 60px 5% 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid #333;
+    position: relative;
+    z-index: 2;
+}
+
+.footerMain {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 60px;
+    margin-bottom: 40px;
+}
+
+.footerBrand {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.footerLogo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.siteLogo {
+    height: 40px;
+    width: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.footerLogo h3 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.footerBrand p {
+    color: #aaa;
+    line-height: 1.8;
+    max-width: 400px;
+}
+
+.footerSocialIcons {
+    display: flex;
+    gap: 15px;
+}
+
+.footerSocialIcons a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(26, 26, 26, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    transition: all 0.3s ease;
+}
+
+.footerSocialIcons a:hover {
+    background-color: #FF6B6B;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+.footerLinks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footerSection h4 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #FF6B6B;
+}
+
+.footerSection a {
+    display: block;
+    color: #aaa;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footerSection a:hover {
+    color: #fff;
+    padding-left: 5px;
+}
+
+.footerBottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #aaa;
+}
+
+.footerBottomLinks {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.footerBottomLinks a {
+    color: #aaa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footerBottomLinks a:hover {
+    color: #FF6B6B;
+}
+
+@media (max-width: 968px) {
+    .footerMain {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footerLinks {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 568px) {
+    .footerLinks {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footerBottom {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .footerBottomLinks {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
