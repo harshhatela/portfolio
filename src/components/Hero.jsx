@@ -3,6 +3,24 @@ import styles from '../styles/Hero.module.css';
 import logo from '../assets/logo.png';
 
 const Hero = () => {
+  const handleDownloadResume = () => {
+    // Google Drive direct download link
+    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1RUPyqG9uBllILdcLf1-h295zuLNPeUb5';
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Harsh_Hatela_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleMyProjectsClick = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className={styles.hero} id="home">
       <div className={styles.heroContent}>
@@ -15,10 +33,16 @@ const Hero = () => {
             technologies and design principles, I create experiences that matter.
           </p>
           <div className={styles.heroButtons}>
-            <button className={`${styles.btnPrimary} ${styles.animatedBtn}`}>
+            <button 
+              className={`${styles.btnPrimary} ${styles.animatedBtn}`}
+              onClick={handleDownloadResume}
+            >
               <span>Download Resume</span>
             </button>
-            <button className={`${styles.btnSecondary} ${styles.animatedBtn}`}>
+            <button 
+              className={`${styles.btnSecondary} ${styles.animatedBtn}`}
+              onClick={handleMyProjectsClick}
+            >
               <span>My Projects</span>
             </button>
           </div>

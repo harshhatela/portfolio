@@ -2,6 +2,13 @@ import React from 'react';
 import styles from '../styles/CTA.module.css';
 
 const CTA = () => {
+  const handleLetsConnect = () => {
+    const phoneNumber = '918079074033'; // Your WhatsApp number with country code (no + or spaces)
+    const message = 'Hi Harsh! I visited your portfolio and I\'m impressed with your work. Let\'s connect and discuss potential opportunities!';  
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   return (
     <section className={styles.cta}>
       <div className={styles.ctaContent}>
@@ -11,7 +18,10 @@ const CTA = () => {
           something amazing that makes a real impact.
         </p>
         <div className={styles.ctaActions}>
-          <button className={`${styles.btnPrimary} ${styles.animatedBtn}`}>
+          <button 
+            className={`${styles.btnPrimary} ${styles.animatedBtn}`}
+            onClick={handleLetsConnect}
+          >
             <span>Let's Connect</span>
           </button>
           <div className={styles.socialLinks}>

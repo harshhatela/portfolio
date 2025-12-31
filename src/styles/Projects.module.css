@@ -8,10 +8,204 @@
     font-size: 4rem;
     font-weight: 900;
     text-align: center;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     letter-spacing: 5px;
     animation: fadeInUp 0.8s ease-out;
     color: #fff;
+}
+
+.filterContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    padding: 0 20px;
+}
+
+.radioInputs {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 50px;
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 107, 107, 0.2);
+    padding: 8px;
+    font-size: 14px;
+    gap: 8px;
+    max-width: 700px;
+    width: 100%;
+}
+
+.radioInputs .radio {
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+    min-width: fit-content;
+}
+
+.radioInputs .radio input {
+    display: none;
+}
+
+.radioInputs .radio .name {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    border: none;
+    padding: 12px 24px;
+    color: #aaa;
+    font-weight: 500;
+    font-family: inherit;
+    background: transparent;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+}
+
+.radioInputs .radio input:checked+.name {
+    background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+    color: white;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    transform: translateY(-2px);
+}
+
+.radioInputs .radio:hover .name {
+    background: rgba(255, 107, 107, 0.1);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.radioInputs .radio:hover input:checked+.name {
+    transform: translateY(-2px);
+}
+
+.radioInputs .radio input:checked+.name {
+    animation: selectTab 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radioInputs .radio .name::before,
+.radioInputs .radio .name::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.radioInputs .radio input:checked+.name::before,
+.radioInputs .radio input:checked+.name::after {
+    animation: particles 0.8s ease-out forwards;
+}
+
+.radioInputs .radio .name::before {
+    background: #FFE66D;
+    box-shadow: 0 0 6px #FFE66D;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.radioInputs .radio .name::after {
+    background: #FF6B6B;
+    box-shadow: 0 0 8px #FF6B6B;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.radioInputs .radio input:checked+.name {
+    overflow: visible;
+}
+
+.radioInputs .radio input:checked+.name::before {
+    box-shadow:
+        0 0 6px #FFE66D,
+        10px -10px 0 #FFE66D,
+        -10px -10px 0 #FFE66D;
+    animation: multiParticlesTop 0.8s ease-out forwards;
+}
+
+.radioInputs .radio input:checked+.name::after {
+    box-shadow:
+        0 0 8px #FF6B6B,
+        10px 10px 0 #FF6B6B,
+        -10px 10px 0 #FF6B6B;
+    animation: multiParticlesBottom 0.8s ease-out forwards;
+}
+
+@keyframes selectTab {
+    0% {
+        transform: scale(0.95) translateY(0);
+    }
+
+    50% {
+        transform: scale(1.05) translateY(-3px);
+    }
+
+    100% {
+        transform: scale(1) translateY(-2px);
+    }
+}
+
+@keyframes multiParticlesTop {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px) scale(0);
+        box-shadow:
+            0 0 6px transparent,
+            20px -20px 0 transparent,
+            -20px -20px 0 transparent;
+    }
+}
+
+@keyframes multiParticlesBottom {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    40% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(20px) scale(0);
+        box-shadow:
+            0 0 8px transparent,
+            20px 20px 0 transparent,
+            -20px 20px 0 transparent;
+    }
+}
+
+@keyframes particles {
+    0% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px) scale(0);
+    }
 }
 
 .projectsGrid {
@@ -72,22 +266,19 @@
 }
 
 .projectLink {
-    background: #FF6B6B;
-    color: #fff;
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
+    background: transparent;
+    color: #FF6B6B;
+    border: 2px solid #FF6B6B;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 .projectLink:hover {
-    transform: rotate(45deg) scale(1.2);
+    background: #FF6B6B;
+    color: #fff;
 }
 
 @keyframes fadeInUp {
@@ -102,18 +293,150 @@
     }
 }
 
-@media (max-width: 768px) {
-    .projectsGrid {
-        grid-template-columns: 1fr;
-    }
-
+/* Tablet Responsive */
+@media (max-width: 968px) {
     .sectionTitle {
         font-size: 3rem;
+        margin-bottom: 40px;
+    }
+
+    .filterContainer {
+        margin-bottom: 50px;
+    }
+
+    .radioInputs {
+        max-width: 600px;
+        padding: 7px;
+        gap: 7px;
+    }
+
+    .radioInputs .radio .name {
+        padding: 11px 20px;
+        font-size: 13px;
     }
 }
 
+/* Mobile Landscape */
+@media (max-width: 768px) {
+    .projects {
+        padding: 80px 5%;
+    }
+
+    .sectionTitle {
+        font-size: 2.5rem;
+        margin-bottom: 35px;
+    }
+
+    .filterContainer {
+        margin-bottom: 45px;
+        padding: 0 15px;
+    }
+
+    .radioInputs {
+        padding: 6px;
+        gap: 6px;
+        border-radius: 40px;
+    }
+
+    .radioInputs .radio .name {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+
+    .projectsGrid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+}
+
+/* Mobile Portrait */
 @media (max-width: 568px) {
+    .projects {
+        padding: 60px 5%;
+    }
+
     .sectionTitle {
         font-size: 2rem;
+        letter-spacing: 3px;
+        margin-bottom: 30px;
+    }
+
+    .filterContainer {
+        margin-bottom: 40px;
+        padding: 0 10px;
+    }
+
+    .radioInputs {
+        padding: 5px;
+        gap: 5px;
+        border-radius: 35px;
+        justify-content: center;
+    }
+
+    .radioInputs .radio {
+        flex: 0 1 auto;
+    }
+
+    .radioInputs .radio .name {
+        padding: 9px 14px;
+        font-size: 11px;
+        border-radius: 30px;
+    }
+
+    .projectInfo {
+        padding: 20px;
+    }
+
+    .projectInfo h3 {
+        font-size: 1.2rem;
+    }
+
+    .projectInfo p {
+        font-size: 0.9rem;
+    }
+
+    .projectLink {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 420px) {
+    .sectionTitle {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+
+    .radioInputs {
+        padding: 4px;
+        gap: 4px;
+    }
+
+    .radioInputs .radio .name {
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+
+    .projectsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 360px) {
+    .filterContainer {
+        padding: 0 5px;
+    }
+
+    .radioInputs {
+        padding: 4px;
+        gap: 3px;
+    }
+
+    .radioInputs .radio .name {
+        padding: 7px 10px;
+        font-size: 9px;
     }
 }

@@ -125,3 +125,8 @@ button {
     transform: translateY(-2000px);
   }
 }
+
+/* Hide navbar when modal is open */
+body.modal-open nav {
+  display: none !important;
+}

@@ -178,4 +178,11 @@
     .navbarCta {
         display: none;
     }
+
+    /* Hide navbar when modal is open */
+    body.modal-open .navbar {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
 }
