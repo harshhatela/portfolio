@@ -15,7 +15,7 @@ export const services = [
       'Admin panel (if needed)',
       '30 days post-launch support'
     ],
-    price: '$500',
+    price: '₹ -',
     timeline: '2-4 weeks'
   },
   {
@@ -31,7 +31,7 @@ export const services = [
       'Design system and style guide',
       'Handoff files for developers'
     ],
-    price: '$400',
+    price: '₹ -',
     timeline: '1-3 weeks'
   },
   {
@@ -47,7 +47,7 @@ export const services = [
       'App store submission assistance',
       '60 days maintenance support'
     ],
-    price: '$1000',
+    price: '₹ -',
     timeline: '4-8 weeks'
   },
   {
@@ -63,7 +63,7 @@ export const services = [
       'Social media templates',
       'Brand assets in various formats'
     ],
-    price: '$600',
+    price: '₹ -',
     timeline: '2-3 weeks'
   },
   {
@@ -79,7 +79,7 @@ export const services = [
       'Analytics and monthly reports',
       'Ad campaign setup (if needed)'
     ],
-    price: '$350/month',
+    price: '₹/month',
     timeline: 'Ongoing'
   },
   {
@@ -95,7 +95,7 @@ export const services = [
       'Best practices and optimization tips',
       'Ongoing consultation support'
     ],
-    price: '$100/hour',
+    price: '₹/hour',
     timeline: 'Flexible'
   }
 ];

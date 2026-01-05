@@ -16,12 +16,14 @@ import CTA from './components/CTA';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
+import Certificates from './components/Certificates';
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
+  const [showCertificates, setShowCertificates] = useState(false);
 
   // Loading screen timer
   useEffect(() => {
@@ -39,12 +41,11 @@ function App() {
     };
 
     const handleKeyDown = (e) => {
-      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
       if (
-        e.keyCode === 123 || // F12
-        (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
-        (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
-        (e.ctrlKey && e.keyCode === 85) // Ctrl+U
+        e.keyCode === 123 ||
+        (e.ctrlKey && e.shiftKey && e.keyCode === 73) ||
+        (e.ctrlKey && e.shiftKey && e.keyCode === 74) ||
+        (e.ctrlKey && e.keyCode === 85)
       ) {
         e.preventDefault();
         return false;
@@ -84,7 +85,12 @@ function App() {
   return (
     <div className="app">
       <BackgroundEffects />
-      <Navbar scrolled={scrolled} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      <Navbar 
+        scrolled={scrolled} 
+        menuOpen={menuOpen} 
+        setMenuOpen={setMenuOpen}
+        onCertificatesClick={() => setShowCertificates(true)}
+      />
       <Hero />
       <About />
       <Skills />
@@ -93,8 +99,12 @@ function App() {
       <Services />
       <CTA />
       <Contact />
-      <Footer />
+      <Footer onCertificatesClick={() => setShowCertificates(true)} />
       <BackToTop show={showBackToTop} onClick={scrollToTop} />
+      
+      {showCertificates && (
+        <Certificates onClose={() => setShowCertificates(false)} />
+      )}
     </div>
   );
 }

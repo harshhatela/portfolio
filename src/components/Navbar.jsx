@@ -5,10 +5,17 @@ import { navLinks } from '../data/navLinksData';
 
 const Navbar = ({ scrolled, menuOpen, setMenuOpen }) => {
   const handleLetsTalk = () => {
-    const phoneNumber = '918079074033'; // Your WhatsApp number with country code (no + or spaces)
+    const phoneNumber = '918079074033';
     const message = 'Hi Harsh! I came across your portfolio and would love to discuss a potential project with you.';
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+  };
+
+  const handleLinkClick = (href) => {
+    if (href === '/certificates') {
+      window.open('/certificates.html', '_blank');
+    }
+    setMenuOpen(false);
   };
 
   return (
@@ -21,14 +28,30 @@ const Navbar = ({ scrolled, menuOpen, setMenuOpen }) => {
 
         <div className={`${styles.navbarMenu} ${menuOpen ? styles.active : ''}`}>
           {navLinks.map((link, index) => (
-            <a 
-              key={index} 
-              href={link.href} 
-              className={styles.navbarLink}
-              onClick={() => setMenuOpen(false)}
-            >
-              {link.name}
-            </a>
+            link.href === '/certificates' ? (
+              <a 
+                key={index}
+                href="/certificates.html"
+                className={styles.navbarLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(link.href);
+                }}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <a 
+                key={index} 
+                href={link.href} 
+                className={styles.navbarLink}
+                onClick={() => setMenuOpen(false)}
+              >
+                {link.name}
+              </a>
+            )
           ))}
         </div>
 

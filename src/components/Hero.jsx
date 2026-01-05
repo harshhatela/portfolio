@@ -4,8 +4,8 @@ import logo from '../assets/logo.png';
 
 const Hero = () => {
   const handleDownloadResume = () => {
-    // Google Drive direct download link
-    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1RUPyqG9uBllILdcLf1-h295zuLNPeUb5';
+    // Updated Google Drive direct download link
+    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1ZDg5KTxSb0S7bTF-Oz-jEZ20DKjkNlNQ';
     const link = document.createElement('a');
     link.href = resumeUrl;
     link.download = 'Harsh_Hatela_Resume.pdf';

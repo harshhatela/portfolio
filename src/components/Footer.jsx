@@ -38,6 +38,13 @@ const Footer = () => {
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
+            <a href="/certificates.html"target="_blank"rel="noopener noreferrer"onClick={(e) => 
+    {
+      e.preventDefault();
+      window.open('/certificates.html', '_blank');
+    }
+    }>Certificates
+</a>
           </div>
           
           <div className={styles.footerSection}>

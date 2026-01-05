@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import styles from '../styles/Projects.module.css';
 import { projects } from '../data/projectsData';
+import Error404 from './Error404';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [showError, setShowError] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
   
   const categories = ['All', 'Web Design', 'Mobile App', 'Branding', 'UI/UX'];
 
@@ -11,10 +14,18 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
-  const handleProjectClick = (projectUrl) => {
-    if (projectUrl) {
-      window.open(projectUrl, '_blank');
+  const handleProjectClick = (project) => {
+    if (project.url && project.url !== '#' && project.url !== 'https://example.com') {
+      window.open(project.url, '_blank');
+    } else {
+      setSelectedProject(project);
+      setShowError(true);
     }
+  };
+
+  const handleCloseError = () => {
+    setShowError(false);
+    setSelectedProject(null);
   };
 
   return (
@@ -43,7 +54,7 @@ const Projects = () => {
             key={index} 
             className={styles.projectCard} 
             style={{ animationDelay: `${index * 0.1}s` }}
-            onClick={() => handleProjectClick(project.url)}
+            onClick={() => handleProjectClick(project)}
           >
             <div className={styles.projectImage}>
               <img src={project.image} alt={project.title} />
@@ -56,6 +67,13 @@ const Projects = () => {
           </div>
         ))}
       </div>
+
+      {showError && (
+        <Error404 
+          onClose={handleCloseError} 
+          projectTitle={selectedProject?.title || 'Project'}
+        />
+      )}
     </section>
   );
 };
