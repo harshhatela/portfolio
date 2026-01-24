@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    background: #050505;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Stars */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Fireflies */
+.fireflies {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #FFE66D;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #FFE66D, 0 0 20px #FFE66D, 0 0 30px #FFE66D;
+    animation: fireflyFloat 15s infinite ease-in-out;
+    opacity: 0;
+}
+
+.firefly:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.firefly:nth-child(2) {
+    left: 20%;
+    animation-delay: 1s;
+}
+
+.firefly:nth-child(3) {
+    left: 30%;
+    animation-delay: 2s;
+}
+
+.firefly:nth-child(4) {
+    left: 40%;
+    animation-delay: 3s;
+}
+
+.firefly:nth-child(5) {
+    left: 50%;
+    animation-delay: 4s;
+}
+
+.firefly:nth-child(6) {
+    left: 60%;
+    animation-delay: 5s;
+}
+
+.firefly:nth-child(7) {
+    left: 70%;
+    animation-delay: 6s;
+}
+
+.firefly:nth-child(8) {
+    left: 80%;
+    animation-delay: 7s;
+}
+
+.firefly:nth-child(9) {
+    left: 90%;
+    animation-delay: 8s;
+}
+
+.firefly:nth-child(10) {
+    left: 15%;
+    animation-delay: 9s;
+}
+
+.firefly:nth-child(11) {
+    left: 25%;
+    animation-delay: 10s;
+}
+
+.firefly:nth-child(12) {
+    left: 35%;
+    animation-delay: 11s;
+}
+
+.firefly:nth-child(13) {
+    left: 45%;
+    animation-delay: 12s;
+}
+
+.firefly:nth-child(14) {
+    left: 55%;
+    animation-delay: 13s;
+}
+
+.firefly:nth-child(15) {
+    left: 65%;
+    animation-delay: 14s;
+}
+
+@keyframes fireflyFloat {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) translateX(50px);
+        opacity: 0;
+    }
+}
+
+.policy-page {
+    min-height: 100vh;
+    padding: 60px 5% 80px;
+    position: relative;
+    z-index: 2;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.back-button {
+    display: flex;
+    height: 3em;
+    width: 120px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 107, 107, 0.1);
+    border: 2px solid #FF6B6B;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    margin-bottom: 30px;
+    gap: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 15px;
+    color: #FF6B6B;
+}
+
+.back-button svg {
+    font-size: 18px;
+    transition: all 0.3s ease;
+    fill: #FF6B6B;
+}
+
+.back-button:hover {
+    background: #FF6B6B;
+    color: #fff;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+}
+
+.back-button:hover svg {
+    fill: #fff;
+    transform: translateX(-3px);
+}
+
+.page-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    animation: glow 2s ease-in-out infinite;
+}
+
+.last-updated {
+    color: #aaa;
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+}
+
+.content {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    border: 1px solid rgba(255, 107, 107, 0.1);
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #FF6B6B;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: #FF8E8E;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+p {
+    color: #ccc;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+ul li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+ul li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: #FF6B6B;
+    font-weight: 700;
+}
+
+.contact-info {
+    background: rgba(255, 107, 107, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 4px solid #FF6B6B;
+}
+
+.contact-info strong {
+    color: #FF6B6B;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        text-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+    }
+
+    50% {
+        text-shadow: 0 0 30px rgba(255, 230, 109, 0.5);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .policy-page {
+        padding: 40px 5% 60px;
+    }
+
+    .back-button {
+        width: 100px;
+        height: 2.5em;
+        font-size: 14px;
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+    }
+
+    .content {
+        padding: 30px 25px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p,
+    ul li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 568px) {
+    .back-button {
+        width: 90px;
+        font-size: 13px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .content {
+        padding: 25px 20px;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    p,
+    ul li {
+        font-size: 0.9rem;
+    }
+
+    .contact-info {
+        padding: 15px;
+    }
+}

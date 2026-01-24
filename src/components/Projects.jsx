@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import styles from '../styles/Projects.module.css';
 import { projects } from '../data/projectsData';
-import Error404 from './Error404';
 
 const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('All');
-  const [showError, setShowError] = useState(false);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [showAll, setShowAll] = useState(false);
   
   const categories = ['All', 'Web Design', 'Mobile App', 'Branding', 'UI/UX'];
 
@@ -14,18 +12,30 @@ const Projects = () => {
     ? projects 
     : projects.filter(project => project.category === activeFilter);
 
+  const displayedProjects = showAll ? filteredProjects : filteredProjects.slice(0, 6);
+  const hasMore = filteredProjects.length > 6;
+
   const handleProjectClick = (project) => {
     if (project.url && project.url !== '#' && project.url !== 'https://example.com') {
       window.open(project.url, '_blank');
     } else {
-      setSelectedProject(project);
-      setShowError(true);
+      window.open(`/404.html?project=${encodeURIComponent(project.title)}`, '_blank');
     }
   };
 
-  const handleCloseError = () => {
-    setShowError(false);
-    setSelectedProject(null);
+  const handleLoadMore = () => {
+    setShowAll(true);
+  };
+
+  const handleLoadLess = () => {
+    setShowAll(false);
+    // Scroll to projects section smoothly
+    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleFilterChange = (category) => {
+    setActiveFilter(category);
+    setShowAll(false);
   };
 
   return (
@@ -40,7 +50,7 @@ const Projects = () => {
                 type="radio"
                 name="category"
                 checked={activeFilter === category}
-                onChange={() => setActiveFilter(category)}
+                onChange={() => handleFilterChange(category)}
               />
               <span className={styles.name}>{category}</span>
             </label>
@@ -49,7 +59,7 @@ const Projects = () => {
       </div>
 
       <div className={styles.projectsGrid}>
-        {filteredProjects.map((project, index) => (
+        {displayedProjects.map((project, index) => (
           <div 
             key={index} 
             className={styles.projectCard} 
@@ -68,11 +78,24 @@ const Projects = () => {
         ))}
       </div>
 
-      {showError && (
-        <Error404 
-          onClose={handleCloseError} 
-          projectTitle={selectedProject?.title || 'Project'}
-        />
+      {hasMore && (
+        <div className={styles.loadMoreContainer}>
+          {!showAll ? (
+            <button className={styles.loadMoreBtn} onClick={handleLoadMore}>
+              <span>Load More Projects</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          ) : (
+            <button className={styles.loadLessBtn} onClick={handleLoadLess}>
+              <span>Load Less</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          )}
+        </div>
       )}
     </section>
   );

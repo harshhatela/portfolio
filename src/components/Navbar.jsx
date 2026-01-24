@@ -11,6 +11,10 @@ const Navbar = ({ scrolled, menuOpen, setMenuOpen }) => {
     window.open(whatsappUrl, '_blank');
   };
 
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const handleLinkClick = (href) => {
     if (href === '/certificates') {
       window.open('/certificates.html', '_blank');
@@ -21,7 +25,7 @@ const Navbar = ({ scrolled, menuOpen, setMenuOpen }) => {
   return (
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.navbarContainer}>
-        <div className={styles.navbarLogo}>
+        <div className={styles.navbarLogo} onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
           <img src={logo} alt="Harsh Logo" className={styles.siteLogo} />
           <h2>Harsh</h2>
         </div>

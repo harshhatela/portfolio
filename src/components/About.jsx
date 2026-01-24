@@ -5,14 +5,18 @@ const About = () => {
   return (
     <section className={styles.about} id="about">
       <div className={styles.aboutCard}>
-        <h2 className={styles.aboutTitle}>ABOUT ME</h2>
-        <p className={styles.aboutText}>
-          Hi, I'm Harsh — a full-stack developer who enjoys building thoughtful, well-structured digital products. I focus on creating applications that feel smooth to use, are visually balanced, and work reliably across devices.
-          <br/><br/>
-          I like working across the entire product flow — from shaping the interface to making sure the logic behind it is solid and scalable. My approach is simple: build things that are clean, purposeful, and easy to interact with.
-          <br/><br/>
-          I'm constantly learning through hands-on projects and real experimentation, pushing myself to improve both technically and creatively. I enjoy turning ideas into working products and refining them until they feel right.
-        </p>
+        <h2 className={styles.aboutTitle}>ABOUT</h2>
+        <div className={styles.aboutText}>
+          <p>
+            Hi, I'm Harsh — a developer who enjoys building clean, thoughtful digital experiences using modern web technologies, and occasionally fixing bugs I created five minutes ago.
+          </p>
+          <p>
+            I like working across the full flow of a product, from shaping the interface to making sure everything behind the scenes works smoothly and reliably. Most of my work focuses on websites and web apps that solve real problems, with an emphasis on clarity, usability, and structure rather than unnecessary complexity.
+          </p>
+          <p>
+            I'm still growing, and most of what I've learned comes from hands-on projects — building things, breaking them, and improving them step by step. I take what I build seriously and enjoy refining ideas until they feel simple, purposeful, and complete.
+          </p>
+        </div>
       </div>
     </section>
   );
