@@ -6,7 +6,7 @@ A modern, responsive portfolio built using **React + Vite** to showcase my proje
 
 ## 🚀 Live Demo
 
-🔗 Coming Soon...
+🔗 harshhatela.in
 
 ---
 
