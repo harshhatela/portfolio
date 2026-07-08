@@ -1,0 +1,219 @@
+.contact {
+    padding: 100px 5%;
+    position: relative;
+    z-index: 2;
+}
+
+.sectionTitle {
+    font-size: 4rem;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 80px;
+    letter-spacing: 5px;
+    animation: fadeInUp 0.8s ease-out;
+    color: #fff;
+}
+
+.contactContainer {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.contactInfo h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contactInfo p {
+    color: #aaa;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.contactDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contactItem {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.contactLabel {
+    color: #FF6B6B;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.contactValue {
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.contactForm input,
+.contactForm textarea {
+    padding: 15px 20px;
+    background-color: rgba(26, 26, 26, 0.8);
+    border: 2px solid #333;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+    outline: none;
+    border-color: #FF6B6B;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+}
+
+.inputError {
+    border-color: #ff4444 !important;
+}
+
+.errorText {
+    color: #ff4444;
+    font-size: 0.85rem;
+    margin-top: -12px;
+    padding-left: 5px;
+}
+
+.contactForm textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btnSubmit {
+    position: relative;
+    padding: 15px 35px;
+    background: #FF6B6B;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    z-index: 1;
+}
+
+.btnSubmit:hover {
+    background: #ff5252;
+    box-shadow: 0 6px 25px rgba(255, 107, 107, 0.5);
+    transform: translateY(-2px);
+}
+
+.btnText {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.4s ease;
+}
+
+.planeIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.planeIcon svg {
+    width: 100%;
+    height: 100%;
+    fill: #fff;
+}
+
+.btnSubmit:hover .btnText {
+    transform: translateX(-150%);
+    opacity: 0;
+}
+
+.btnSubmit:hover .planeIcon {
+    animation: flyPlane 1.2s ease-in-out forwards;
+}
+
+@keyframes flyPlane {
+    0% {
+        transform: translate(-150%, 50%) scale(0.5) rotate(-45deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(-50%, -50%) scale(1.2) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(200%, -200%) scale(1) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .contactContainer {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .sectionTitle {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 568px) {
+    .sectionTitle {
+        font-size: 2rem;
+    }
+
+    .contactInfo h3 {
+        font-size: 1.5rem;
+    }
+}

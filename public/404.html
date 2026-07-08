@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Project Not Found | Harsh Hatela</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/404.css" />
+  </head>
+  <body>
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+
+    <div class="error-page">
+      <div class="container">
+        <div class="main-wrapper">
+          <div class="main">
+            <div class="antenna">
+              <div class="antenna-shadow"></div>
+              <div class="a1"></div>
+              <div class="a1d"></div>
+              <div class="a2"></div>
+              <div class="a2d"></div>
+              <div class="a-base"></div>
+            </div>
+            <div class="tv">
+              <div class="cruve">
+                <svg
+                  class="curve-svg"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 189.929 189.929"
+                >
+                  <path
+                    d="M70.343,70.343c-30.554,30.553-44.806,72.7-39.102,115.635l-29.738,3.951C-5.442,137.659,11.917,86.34,49.129,49.13 C86.34,11.918,137.664-5.445,189.928,1.502l-3.95,29.738C143.041,25.54,100.895,39.789,70.343,70.343z"
+                  />
+                </svg>
+              </div>
+              <div class="display-div">
+                <div class="screen-out">
+                  <div class="screen-out1">
+                    <div class="screen">
+                      <span class="notfound-text">NOT FOUND</span>
+                    </div>
+                    <div class="screen-m">
+                      <span class="notfound-text">NOT FOUND</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="lines">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+              </div>
+              <div class="buttons-div">
+                <div class="b1"><div></div></div>
+                <div class="b2"></div>
+                <div class="speakers">
+                  <div class="g1">
+                    <div class="g11"></div>
+                    <div class="g12"></div>
+                    <div class="g13"></div>
+                  </div>
+                  <div class="g"></div>
+                  <div class="g"></div>
+                </div>
+              </div>
+            </div>
+            <div class="bottom">
+              <div class="base1"></div>
+              <div class="base2"></div>
+              <div class="base3"></div>
+            </div>
+          </div>
+          <div class="text-404">
+            <div class="text-4041">4</div>
+            <div class="text-4042">0</div>
+            <div class="text-4043">4</div>
+          </div>
+        </div>
+
+        <div class="error-message">
+          <h1>Project Not Available</h1>
+          <p class="project-name" id="projectName">
+            This project is coming soon!
+          </p>
+          <p class="sub-message">
+            This project is currently under development or not yet published.
+          </p>
+          <button
+            class="back-btn"
+            onclick="window.close(); setTimeout(() => window.location.href = '/', 100);"
+          >
+            <span>← Go Back Home</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get project name from URL parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const projectName = urlParams.get("project");
+      if (projectName) {
+        document.getElementById(
+          "projectName"
+        ).textContent = `"${decodeURIComponent(projectName)}" is coming soon!`;
+      }
+    </script>
+  </body>
+</html>
