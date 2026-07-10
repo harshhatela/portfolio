@@ -79,7 +79,7 @@ function App() {
 
   // Show intro screen while loading
   if (loading) {
-    return <IntroScreen />;
+    return <IntroScreen onComplete={() => setLoading(false)} />;
   }
 
   return (

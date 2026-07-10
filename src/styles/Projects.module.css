@@ -63,40 +63,6 @@
     display: none;
 }
 
-.fadeRight {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 40px;
-    pointer-events: none;
-    z-index: 5;
-    border-radius: 60px;
-    right: 20px;
-    background: linear-gradient(to left, rgba(20, 20, 20, 0.9) 0%, transparent 100%);
-}
-
-.scrollChevron {
-    position: absolute;
-    right: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: rgba(255, 107, 107, 0.2);
-    color: #FF8E8E;
-    font-size: 14px;
-    z-index: 6;
-    animation: pulseChevron 2s ease-in-out infinite;
-    pointer-events: none;
-}
-
-@keyframes pulseChevron {
-    0%, 100% { opacity: 0.6; transform: translateX(0); }
-    50% { opacity: 1; transform: translateX(3px); }
-}
-
 /* Filter radio buttons */
 .radioInputs .radio {
     position: relative;
@@ -144,173 +110,218 @@
 }
 
 /* ─────────────────────────────────────────────
-   GRID — Side by side layout
+   CARD STACK CAROUSEL
    ───────────────────────────────────────────── */
 
-.projectsGrid {
-    max-width: 1400px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-flow: row dense;
-    gap: 24px;
-    align-items: stretch;
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
 }
 
-/* Card size variants */
-.cardLarge {
-    grid-column: span 2;
-    grid-row: span 1;
+.cardStackWrapper {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+    margin-bottom: 40px;
 }
-
-.cardMedium {
-    grid-column: span 2;
-    grid-row: span 1;
-}
-
-.cardSmall {
-    grid-column: span 1;
-    grid-row: span 1;
-}
-
-/* ─────────────────────────────────────────────
-   PROJECT CARDS
-   ───────────────────────────────────────────── */
 
 .projectCard {
-    background: rgba(15, 15, 15, 0.4);
+    position: absolute;
+    width: 85%;
+    max-width: 1100px;
+    height: 480px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: top center;
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
+    background: rgba(15, 15, 15, 0.85);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: 20px;
     overflow: hidden;
-    transition:
-        transform 0.5s cubic-bezier(0.23, 1, 0.32, 1),
-        border-color 0.5s ease,
-        box-shadow 0.5s ease;
     display: flex;
-    flex-direction: column;
-    position: relative;
-    animation: fadeInUp 0.6s ease-out backwards;
-    will-change: transform;
+    flex-direction: row;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .projectCard:hover {
-    border-color: rgba(255, 107, 107, 0.3);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(255, 107, 107, 0.08);
+    border-color: rgba(255, 107, 107, 0.25);
+    box-shadow: 0 25px 60px rgba(255, 107, 107, 0.06);
 }
 
-/* Small cards: subtle rotation on hover for hand-crafted feel */
-.cardSmall:hover {
-    transform: translateY(-8px) rotate(0.4deg);
+/* Stack position classes */
+.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    z-index: 3;
+    pointer-events: auto;
 }
 
-.cardSmall:nth-child(even):hover {
-    transform: translateY(-8px) rotate(-0.4deg);
+.next1 {
+    opacity: 0.7;
+    transform: translateY(-30px) scale(0.95);
+    z-index: 2;
 }
 
-/* ─── Project Image ─── */
-
-.projectImage {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    background: #080808;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.projectImage::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(15, 15, 15, 0.4) 0%, transparent 40%);
+.next2 {
+    opacity: 0.4;
+    transform: translateY(-55px) scale(0.9);
     z-index: 1;
+}
+
+/* Slide-out / slide-in animations */
+.animatingOut {
+    transform: translateX(-120%) rotate(-8deg) scale(0.8);
+    opacity: 0;
+    z-index: 4;
     pointer-events: none;
 }
 
-.projectImage img {
+.animatingIn {
+    transform: translateX(120%) rotate(8deg) scale(0.8);
+    opacity: 0;
+    z-index: 4;
+    pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────
+   CARD CONTENT — Split layout
+   ───────────────────────────────────────────── */
+
+.cardLeft {
+    width: 50%;
+    padding: clamp(28px, 3vw, 48px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    overflow-y: auto;
+    /* hide scrollbar */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.cardLeft::-webkit-scrollbar {
+    display: none;
+}
+
+.cardRight {
+    width: 50%;
+    position: relative;
+    background: #080808;
+    overflow: hidden;
+    min-height: 100%;
+}
+
+.cardRight img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    opacity: 0.9;
+    transition: opacity 0.5s ease;
+}
+
+.projectCard:hover .cardRight img {
     opacity: 1;
 }
 
-/* Mobile App projects */
-.projectImage img[src*="tiffinly"],
-.projectImage img[src*="AgroSmart"] {
-    object-fit: contain;
+/* Mobile app image treatment — contain fit */
+.containImage {
+    object-fit: contain !important;
     padding: 20px;
     background: #0a0a0a;
 }
-.projectCard:has(img[src*="tiffinly"]) .projectImage,
-.projectCard:has(img[src*="AgroSmart"]) .projectImage {
-    aspect-ratio: 3 / 4;
+
+/* Overlay gradient */
+.cardRight::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(15, 15, 15, 0.3) 0%, transparent 30%);
+    z-index: 1;
+    pointer-events: none;
 }
 
-.projectCard:hover .projectImage img {
-    transform: scale(1.06);
-    opacity: 1;
+/* ─── Eyebrow ─── */
+.eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #FF8E8E;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 8px;
 }
 
-/* ─── Project Content ─── */
-
-.projectContent {
-    padding: clamp(20px, 2.5vw, 30px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-    min-width: 0;
-    gap: 16px;
-}
-
-.projectInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.projectHeader h3 {
-    font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+/* ─── Title ─── */
+.cardTitle {
+    font-size: clamp(1.4rem, 2vw, 1.8rem);
     font-weight: 700;
     color: #fff;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     letter-spacing: -0.5px;
+    line-height: 1.25;
 }
 
 .subtitle {
     font-size: 0.85rem;
     color: rgba(255, 142, 142, 0.8);
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     opacity: 0.9;
     line-height: 1.4;
 }
 
+/* ─── Description ─── */
 .description {
-    font-size: clamp(0.8rem, 1vw, 0.88rem);
+    font-size: clamp(0.82rem, 1vw, 0.92rem);
     color: rgba(255, 255, 255, 0.5);
     line-height: 1.7;
     margin-bottom: 16px;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     font-weight: 400;
 }
 
-.cardLarge .description {
-    -webkit-line-clamp: 4;
+/* ─── Tech Stack ─── */
+.techStack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
 }
 
-/* ─── Highlights & Tech Stack ─── */
+.techBadge {
+    font-size: 0.6rem;
+    color: rgba(255, 107, 107, 0.7);
+    background: rgba(255, 107, 107, 0.03);
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 107, 107, 0.1);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
 
+.projectCard:hover .techBadge {
+    background: rgba(255, 107, 107, 0.08);
+    border-color: rgba(255, 107, 107, 0.3);
+    color: #FF8E8E;
+}
+
+/* ─── Highlights ─── */
 .highlights {
     display: flex;
     flex-wrap: wrap;
@@ -333,34 +344,7 @@
     border-color: rgba(255, 107, 107, 0.2);
 }
 
-.techStack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 8px;
-}
-
-.techBadge {
-    font-size: 0.6rem;
-    color: rgba(255, 107, 107, 0.7);
-    background: rgba(255, 107, 107, 0.03);
-    padding: 3px 9px;
-    border-radius: 100px;
-    border: 1px solid rgba(255, 107, 107, 0.1);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-}
-
-.projectCard:hover .techBadge {
-    background: rgba(255, 107, 107, 0.08);
-    border-color: rgba(255, 107, 107, 0.3);
-    color: #FF8E8E;
-}
-
 /* ─── Project Actions (buttons) ─── */
-
 .projectActions {
     display: flex;
     gap: 12px;
@@ -508,8 +492,73 @@
 }
 
 /* ─────────────────────────────────────────────
-   VIEW MORE
+   NAVIGATION ARROWS
    ───────────────────────────────────────────── */
+
+.navBtn {
+    position: absolute;
+    z-index: 10;
+    padding: 16px;
+    color: #FF8E8E;
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 107, 107, 0.15);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.navBtn:hover {
+    background: rgba(255, 107, 107, 0.15);
+    border-color: rgba(255, 107, 107, 0.4);
+    transform: scale(1.05);
+}
+
+.navBtnLeft {
+    left: 0;
+}
+
+.navBtnRight {
+    right: 0;
+}
+
+.desktopNav {
+    display: flex;
+}
+
+.mobileNavBtns {
+    display: none;
+    justify-content: center;
+    gap: 16px;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.mobileNavBtns .navBtn {
+    position: relative;
+    padding: 12px;
+}
+
+/* ─── Card counter indicator ─── */
+.cardCounter {
+    text-align: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ─────────────────────────────────────────────
+   VIEW MORE — GitHub link
+   ───────────────────────────────────────────── */
+
 .viewMoreContainer {
     display: flex;
     justify-content: center;
@@ -542,9 +591,12 @@
    ───────────────────────────────────────────── */
 
 @media (max-width: 1200px) {
-    .projectsGrid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+    .projectCard {
+        width: 90%;
+    }
+
+    .cardLeft {
+        padding: 24px;
     }
 }
 
@@ -557,30 +609,38 @@
         padding: 80px 4% 60px;
     }
 
-    .projectsGrid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+    .cardStackWrapper {
+        height: 720px;
     }
 
-    .cardLarge,
-    .cardMedium,
-    .cardSmall {
-        grid-column: span 1;
+    .projectCard {
+        width: 95%;
+        height: 660px;
+        flex-direction: column;
     }
 
-    .projectImage {
-        aspect-ratio: 16 / 9;
-    }
-    .projectCard:has(img[src*="tiffinly"]) .projectImage,
-    .projectCard:has(img[src*="AgroSmart"]) .projectImage {
-        aspect-ratio: 4 / 3;
+    .cardLeft {
+        width: 100%;
+        padding: 24px 20px;
+        order: 2;
     }
 
-    .projectContent {
-        padding: 20px;
+    .cardRight {
+        width: 100%;
+        height: 220px;
+        min-height: 220px;
+        order: 1;
     }
 
-    /* Filter bar stays scrollable on mobile */
+    .next1 {
+        transform: translateY(-20px) scale(0.95);
+    }
+
+    .next2 {
+        transform: translateY(-38px) scale(0.9);
+    }
+
+    /* Filter bar */
     .filterWrapper {
         padding: 0 12px;
     }
@@ -590,21 +650,26 @@
         gap: 4px;
     }
 
-    .fadeRight {
-        right: 12px;
-    }
-
-    .scrollChevron {
-        right: 18px;
-    }
-
     .projectActions {
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
     }
 
     .animatedBtn {
         width: 100%;
+    }
+
+    /* Navigation */
+    .desktopNav {
+        display: none;
+    }
+
+    .mobileNavBtns {
+        display: flex;
+    }
+
+    .cardCounter {
+        margin-top: -10px;
     }
 }
 
@@ -617,15 +682,19 @@
         padding: 70px 3% 50px;
     }
 
-    .projectImage {
-        aspect-ratio: 16 / 10;
+    .cardStackWrapper {
+        height: 680px;
     }
 
-    .projectContent {
+    .projectCard {
+        height: 620px;
+    }
+
+    .cardTitle {
+        font-size: 1.1rem;
+    }
+
+    .cardLeft {
         padding: 16px;
-    }
-
-    .projectHeader h3 {
-        font-size: 1rem;
     }
 }

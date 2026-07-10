@@ -26,13 +26,7 @@ const Hero = () => {
   }, []);
 
   const handleDownloadResume = () => {
-    const resumeUrl = 'https://drive.google.com/uc?export=download&id=1ZDg5KTxSb0S7bTF-Oz-jEZ20DKjkNlNQ';
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = 'Harsh_Hatela_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    window.open('https://drive.google.com/file/d/1AeoxgZC8dwT8sNOyTbqmYrF7Sgl6yTqH/view?usp=drive_link', '_blank', 'noopener,noreferrer');
   };
 
   const handleMyProjectsClick = () => {

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://harshhatela.vercel.app/sitemap.xml

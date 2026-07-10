@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from '../styles/BackgroundEffects.module.css';
+import SpaceBackground from './SpaceBackground';
 
 const BackgroundEffects = () => {
   return (
     <>
+      <SpaceBackground />
       <div id="stars"></div>
       <div id="stars2"></div>
       <div id="stars3"></div>
@@ -18,5 +20,3 @@ const BackgroundEffects = () => {
 };
 
 export default BackgroundEffects;
-
-// test

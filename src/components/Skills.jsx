@@ -16,8 +16,10 @@ const Skills = () => {
             key={index}
             className={styles.skillChip}
             style={{
-              top: skill.top,
-              left: skill.left,
+              "--desktop-top": skill.top,
+              "--desktop-left": skill.left,
+              "--mobile-top": skill.mobileTop,
+              "--mobile-left": skill.mobileLeft,
               "--color": skill.color,
               animationDelay: `${Math.random() * 2}s`,
               animationDuration: `${6 + Math.random() * 4}s` 
