@@ -26,7 +26,7 @@ const Navbar = ({ scrolled, menuOpen, setMenuOpen }) => {
     <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`}>
       <div className={styles.navbarContainer}>
         <div className={styles.navbarLogo} onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
-          <img src={logo} alt="Harsh Logo" className={styles.siteLogo} />
+          <img src={logo} alt="Harsh Hatela Logo" className={styles.siteLogo} />
           <h2>Harsh</h2>
         </div>
 

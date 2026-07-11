@@ -40,7 +40,7 @@ const Hero = () => {
     <section className={styles.hero} id="home">
       <div className={styles.heroContent}>
         <div className={styles.heroText}>
-          <h1 className={styles.heroGreeting}>Hey! I'm Harsh</h1>
+          <h1 className={styles.heroGreeting}>Hey! I'm Harsh Hatela</h1>
           <h2 className={`${styles.heroTitle} ${animating ? styles.heroTitleExit : styles.heroTitleEnter}`}>
             {roles[currentRoleIndex]}
           </h2>
@@ -67,7 +67,7 @@ const Hero = () => {
         <div className={styles.heroImageContainer}>
           <div className={styles.heroImage}>
             <div className={styles.imageBorder}></div>
-            <img src={logo} alt="Profile" />
+            <img src={logo} alt="Harsh Hatela Profile Photo" />
           </div>
         </div>
       </div>

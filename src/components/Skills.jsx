@@ -9,7 +9,7 @@ const Skills = () => {
     <section className={styles.skills} id="skills" ref={skillsRef}>
       <div className={styles.skillsContainerInner}>
         <div className={styles.centerText}>
-          <h1>My Skills & <br /> <span className={styles.highlight}>Expertise</span></h1>
+          <h2 className={styles.skillsHeading}>My Skills & <br /> <span className={styles.highlight}>Expertise</span></h2>
         </div>
         {skills.map((skill, index) => (
           <div

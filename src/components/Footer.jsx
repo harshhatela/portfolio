@@ -8,7 +8,7 @@ const Footer = () => {
       <div className={styles.footerMain}>
         <div className={styles.footerBrand}>
           <div className={styles.footerLogo}>
-            <img src={logo} alt="Harsh Logo" className={styles.siteLogo} />
+            <img src={logo} alt="Harsh Hatela Logo" className={styles.siteLogo} />
             <h3>Harsh</h3>
           </div>
           <p>Building digital experiences that matter. Let's create something amazing together.</p>

@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "harshhatela.vercel.app" }
+      ],
+      "destination": "https://harshhatela.in/:path*",
+      "permanent": true
+    }
+  ]
+}

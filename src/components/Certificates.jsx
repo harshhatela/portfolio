@@ -56,7 +56,7 @@ const Certificates = ({ onClose }) => {
 
         <div className={styles.container}>
           <div className={styles.header}>
-            <h1 className={styles.title}>My Certificates</h1>
+            <h2 className={styles.title}>My Certificates</h2>
             <p className={styles.subtitle}>A collection of my achievements and certifications</p>
           </div>
 
